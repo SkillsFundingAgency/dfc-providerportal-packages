@@ -65,6 +65,8 @@ namespace Dfc.ProviderPortal.Packages
 
         public static void IfGreaterThan(decimal limit, decimal argument, string name)
         {
+            IfNullOrWhiteSpace(name, nameof(name));
+
             if (argument > limit)
                 throw new ArgumentOutOfRangeException($"{name} cannot be greater than {limit}.", name);
         }
