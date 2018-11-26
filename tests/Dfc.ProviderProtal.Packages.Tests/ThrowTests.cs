@@ -263,7 +263,7 @@ namespace Dfc.ProviderProtal.Packages.Tests
         }
 
         [Fact]
-        public void Throw_fLessThan_Int_WithLimitAs0ArgumentAs0AndNameAsWhitespaceThrowsArgumentException()
+        public void Throw_IfLessThan_Int_WithLimitAs0ArgumentAs0AndNameAsWhitespace_ThrowsArgumentException()
         {
             // arrange
             int limit = 0;
@@ -272,6 +272,158 @@ namespace Dfc.ProviderProtal.Packages.Tests
 
             // act & assert
             Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfLessThan_Int_WithLimitAs1ArgumentAs0_ThrowsArgumentOutOfRangeException()
+        {
+            // arrange
+            int limit = 1;
+            int argument = 0;
+            var name = nameof(argument);
+
+            // act & assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => Throw.IfLessThan(limit, argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfLessThan_Int_WithLimitAs1ArgumentAs1_DoesNotThrowArgumentOutOfRangeException()
+        {
+            // arrange
+            int limit = 1;
+            int argument = 1;
+            var name = nameof(argument);
+            ArgumentOutOfRangeException expected = null;
+
+            //act
+            try
+            {
+                Throw.IfLessThan(limit, argument, name);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                expected = e;
+            }
+
+            // assert
+            Assert.Null(expected);
+        }
+
+        [Fact]
+        public void Throw_IfLessThan_Int_WithLimitAs1ArgumentAs2_DoesNotThrowArgumentOutOfRangeException()
+        {
+            // arrange
+            int limit = 1;
+            int argument = 2;
+            var name = nameof(argument);
+            ArgumentOutOfRangeException expected = null;
+
+            //act
+            try
+            {
+                Throw.IfLessThan(limit, argument, name);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                expected = e;
+            }
+
+            // assert
+            Assert.Null(expected);
+        }
+
+        [Fact]
+        public void Throw_IfLessThan_Decimal_WithLimitAs0ArgumentAs0AndNameAsNull_ThrowsArgumentException()
+        {
+            // arrange
+            decimal limit = 0;
+            decimal argument = 0;
+            string name = null;
+
+            // act & assert
+            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfLessThan_Decimal_WithLimitAs0ArgumentAs0AndNameAsEmpty_ThrowsArgumentException()
+        {
+            // arrange
+            decimal limit = 0;
+            decimal argument = 0;
+            string name = string.Empty;
+
+            // act & assert
+            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfLessThan_Decimal_WithLimitAs0ArgumentAs0AndNameAsWhitespace_ThrowsArgumentException()
+        {
+            // arrange
+            decimal limit = 0;
+            decimal argument = 0;
+            string name = " ";
+
+            // act & assert
+            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfLessThan_Decimal_WithLimitAs1ArgumentAs0_ThrowsArgumentOutOfRangeException()
+        {
+            // arrange
+            decimal limit = 1;
+            decimal argument = 0;
+            var name = nameof(argument);
+
+            // act & assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => Throw.IfLessThan(limit, argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfLessThan_Decimal_WithLimitAs1ArgumentAs1_DoesNotThrowArgumentOutOfRangeException()
+        {
+            // arrange
+            decimal limit = 1;
+            decimal argument = 1;
+            var name = nameof(argument);
+            ArgumentOutOfRangeException expected = null;
+
+            //act
+            try
+            {
+                Throw.IfLessThan(limit, argument, name);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                expected = e;
+            }
+
+            // assert
+            Assert.Null(expected);
+        }
+
+        [Fact]
+        public void Throw_IfLessThan_Decimal_WithLimitAs1ArgumentAs2_DoesNotThrowArgumentOutOfRangeException()
+        {
+            // arrange
+            decimal limit = 1;
+            decimal argument = 2;
+            var name = nameof(argument);
+            ArgumentOutOfRangeException expected = null;
+
+            //act
+            try
+            {
+                Throw.IfLessThan(limit, argument, name);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                expected = e;
+            }
+
+            // assert
+            Assert.Null(expected);
         }
     }
 }
