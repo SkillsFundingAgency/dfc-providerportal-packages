@@ -677,5 +677,50 @@ namespace Dfc.ProviderProtal.Packages.Tests
             //assert
             Assert.Equal(expected.Message, actual.Message);
         }
+
+
+        [Fact]
+        public void Throw_IfNullOrEmpty_IEnumerable_OfT_WithArgumentAsNull_ThrowsArgumentException()
+        {
+            // arrange
+            IEnumerable<object> argument = null;
+            var name = nameof(argument);
+
+            // act & assert
+            Assert.Throws<ArgumentException>(() => Throw.IfNullOrEmpty(argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfNullOrEmpty_IEnumerable_OfT_WithArgumentAsEmpty_ThrowsArgumentException()
+        {
+            // arrange
+            IEnumerable<object> argument = new object[] { };
+            var name = nameof(argument);
+
+            // act & assert
+            Assert.Throws<ArgumentException>(() => Throw.IfNullOrEmpty(argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfNullOrEmpty_IEnumerable_OfT_WithArgumentAsNotEmpty_DoesNotThrowArgumentException()
+        {
+            // arrange
+            IEnumerable<object> argument = new object[] { new { } };
+            var name = nameof(argument);
+            ArgumentException expected = null;
+
+            //act
+            try
+            {
+                Throw.IfNullOrEmpty(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                expected = e;
+            }
+
+            // assert
+            Assert.Null(expected);
+        }
     }
 }
