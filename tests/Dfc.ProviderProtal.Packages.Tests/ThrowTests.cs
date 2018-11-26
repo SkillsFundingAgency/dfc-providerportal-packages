@@ -150,8 +150,6 @@ namespace Dfc.ProviderProtal.Packages.Tests
         }
 
 
-
-
         [Fact]
         public void Throw_IfNullOrWhiteSpace_WithArgumentAsNullAndNameAsNull_ThrowsArgumentException()
         {
