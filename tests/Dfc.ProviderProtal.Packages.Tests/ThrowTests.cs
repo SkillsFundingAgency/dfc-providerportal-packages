@@ -7,8 +7,8 @@ namespace Dfc.ProviderProtal.Packages.Tests
 {
     public class ThrowTests
     {
-        private const string ARGUMENTEXPECTION_MESSAGE = "name cannot be null or empty or whitespace.\r\nParameter name: name";
-        private static readonly ArgumentException _expectedArgumentException = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+        private static readonly ArgumentException _expectedArgumentException =
+            new ArgumentException("name cannot be null or empty or whitespace.\r\nParameter name: name");
 
         [Fact]
         public void Throw_IfNull_OfT_WithArgumentAsNullAndNameAsNull_ThrowsArgumentException()
