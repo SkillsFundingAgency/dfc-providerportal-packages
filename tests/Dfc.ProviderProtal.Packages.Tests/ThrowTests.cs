@@ -18,6 +18,28 @@ namespace Dfc.ProviderProtal.Packages.Tests
         }
 
         [Fact]
+        public void Throw_IfNull_OfT_WithArgumentAsNullAndNameAsEmpty_ThrowsArgumentException()
+        {
+            // arrange
+            object argument = null;
+            var name = string.Empty;
+
+            // act & assert
+            Assert.Throws<ArgumentException>(() => Throw.IfNull(argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfNull_OfT_WithArgumentAsNullAndNameAsWhitespaceThrowsArgumentException()
+        {
+            // arrange
+            object argument = null;
+            var name = " ";
+
+            // act & assert
+            Assert.Throws<ArgumentException>(() => Throw.IfNull(argument, name));
+        }
+
+        [Fact]
         public void Throw_IfNull_OfT_WithArgumentAsNull_ThrowsArgumentNullException()
         {
             // arrange
@@ -26,17 +48,6 @@ namespace Dfc.ProviderProtal.Packages.Tests
 
             // act & assert
             Assert.Throws<ArgumentNullException>(() => Throw.IfNull(argument, name));
-        }
-
-        [Fact]
-        public void Throw_IfNull_OfT_WithNameAsNull_ThrowsArgumentException()
-        {
-            // arrange
-            object argument = new { };
-            string name = null;
-
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfNull(argument, name));
         }
 
         [Fact]

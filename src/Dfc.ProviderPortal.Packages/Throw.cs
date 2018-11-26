@@ -28,7 +28,7 @@ namespace Dfc.ProviderPortal.Packages
 
         public static void IfNullOrWhiteSpace(string argument, string name)
         {
-            if (string.IsNullOrEmpty(argument))
+            if (string.IsNullOrWhiteSpace(argument))
                 throw new ArgumentException($"{name} cannot be null or empty or whitespace.", name);
         }
 
