@@ -237,5 +237,41 @@ namespace Dfc.ProviderProtal.Packages.Tests
             // assert
             Assert.Null(expected);
         }
+
+        [Fact]
+        public void Throw_IfLessThan_Int_WithLimitAs0ArgumentAs0AndNameAsNull_ThrowsArgumentException()
+        {
+            // arrange
+            int limit = 0;
+            int argument = 0;
+            string name = null;
+
+            // act & assert
+            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfLessThan_Int_WithLimitAs0ArgumentAs0AndNameAsEmpty_ThrowsArgumentException()
+        {
+            // arrange
+            int limit = 0;
+            int argument = 0;
+            string name = string.Empty;
+
+            // act & assert
+            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+        }
+
+        [Fact]
+        public void Throw_fLessThan_Int_WithLimitAs0ArgumentAs0AndNameAsWhitespaceThrowsArgumentException()
+        {
+            // arrange
+            int limit = 0;
+            int argument = 0;
+            string name = " ";
+
+            // act & assert
+            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+        }
     }
 }

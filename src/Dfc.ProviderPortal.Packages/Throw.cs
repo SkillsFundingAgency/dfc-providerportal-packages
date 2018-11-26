@@ -37,6 +37,8 @@ namespace Dfc.ProviderPortal.Packages
 
         public static void IfLessThan(int limit, int argument, string name)
         {
+            IfNullOrWhiteSpace(name, nameof(name));
+
             if (argument < limit)
                 throw new ArgumentOutOfRangeException($"{name} cannot be less than {limit}.", name);
         }
