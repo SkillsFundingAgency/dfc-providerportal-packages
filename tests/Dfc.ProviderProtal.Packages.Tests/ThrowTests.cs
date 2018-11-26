@@ -1,20 +1,35 @@
 using Dfc.ProviderPortal.Packages;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Dfc.ProviderProtal.Packages.Tests
 {
     public class ThrowTests
     {
+        const string ARGUMENTEXPECTION_MESSAGE = "name cannot be null or empty or whitespace.\r\nParameter name: name";
+
         [Fact]
         public void Throw_IfNull_OfT_WithArgumentAsNullAndNameAsNull_ThrowsArgumentException()
         {
             // arrange
             object argument = null;
             string name = null;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfNull(argument, name));
+            // act
+            try
+            {
+                Throw.IfNull(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -23,9 +38,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             // arrange
             object argument = null;
             var name = string.Empty;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfNull(argument, name));
+            // act
+            try
+            {
+                Throw.IfNull(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -34,9 +61,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             // arrange
             object argument = null;
             var name = " ";
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfNull(argument, name));
+            // act
+            try
+            {
+                Throw.IfNull(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -78,9 +117,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             // arrange
             string argument = null;
             string name = null;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfNullOrEmpty(argument, name));
+            // act
+            try
+            {
+                Throw.IfNullOrEmpty(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -89,9 +140,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             // arrange
             string argument = null;
             string name = string.Empty;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfNullOrEmpty(argument, name));
+            // act
+            try
+            {
+                Throw.IfNullOrEmpty(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -100,9 +163,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             // arrange
             string argument = null;
             string name = " ";
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfNullOrEmpty(argument, name));
+            // act
+            try
+            {
+                Throw.IfNullOrEmpty(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -156,9 +231,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             // arrange
             string argument = null;
             string name = null;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfNullOrWhiteSpace(argument, name));
+            // act
+            try
+            {
+                Throw.IfNullOrWhiteSpace(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -167,9 +254,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             // arrange
             string argument = null;
             string name = string.Empty;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfNullOrWhiteSpace(argument, name));
+            // act
+            try
+            {
+                Throw.IfNullOrWhiteSpace(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -178,9 +277,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             // arrange
             string argument = null;
             string name = " ";
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfNullOrWhiteSpace(argument, name));
+            // act
+            try
+            {
+                Throw.IfNullOrWhiteSpace(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -245,9 +356,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             int limit = 0;
             int argument = 0;
             string name = null;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+            // act
+            try
+            {
+                Throw.IfLessThan(limit, argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -257,9 +380,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             int limit = 0;
             int argument = 0;
             string name = string.Empty;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+            // act
+            try
+            {
+                Throw.IfLessThan(limit, argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -269,9 +404,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             int limit = 0;
             int argument = 0;
             string name = " ";
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+            // act
+            try
+            {
+                Throw.IfLessThan(limit, argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -339,9 +486,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             decimal limit = 0;
             decimal argument = 0;
             string name = null;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+            // act
+            try
+            {
+                Throw.IfLessThan(limit, argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -351,9 +510,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             decimal limit = 0;
             decimal argument = 0;
             string name = string.Empty;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+            // act
+            try
+            {
+                Throw.IfLessThan(limit, argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -363,9 +534,21 @@ namespace Dfc.ProviderProtal.Packages.Tests
             decimal limit = 0;
             decimal argument = 0;
             string name = " ";
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
 
-            // act & assert
-            Assert.Throws<ArgumentException>(() => Throw.IfLessThan(limit, argument, name));
+            // act
+            try
+            {
+                Throw.IfLessThan(limit, argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
@@ -424,6 +607,75 @@ namespace Dfc.ProviderProtal.Packages.Tests
 
             // assert
             Assert.Null(expected);
+        }
+
+        [Fact]
+        public void Throw_IfNullOrEmpty_IEnumerable_OfT_WithArgumentAsNullAndNameAsNull_ThrowsArgumentException()
+        {
+            // arrange
+            IEnumerable<object> argument = null;
+            string name = null;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
+
+            // act
+            try
+            {
+                Throw.IfNullOrEmpty(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
+        }
+
+        [Fact]
+        public void Throw_IfNullOrEmpty_IEnumerable_OfT_WithArgumentAsNullAndNameAsEmpty_ThrowsArgumentException()
+        {
+            // arrange
+            IEnumerable<object> argument = null;
+            string name = string.Empty;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
+
+            // act
+            try
+            {
+                Throw.IfNullOrEmpty(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
+        }
+
+        [Fact]
+        public void Throw_IfNullOrEmpty_IEnumerable_OfT_WithArgumentAsNullAndNameAsWhiteSpace_ThrowsArgumentException()
+        {
+            // arrange
+            IEnumerable<object> argument = null;
+            string name = " ";
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
+
+            // act
+            try
+            {
+                Throw.IfNullOrEmpty(argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
         }
     }
 }

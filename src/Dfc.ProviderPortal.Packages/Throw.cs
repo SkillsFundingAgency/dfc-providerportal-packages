@@ -16,12 +16,16 @@ namespace Dfc.ProviderPortal.Packages
 
         public static void IfNullOrEmpty(string argument, string name)
         {
+            IfNullOrWhiteSpace(name, nameof(name));
+
             if (string.IsNullOrEmpty(argument))
                 throw new ArgumentException($"{name} cannot be null or empty.", name);
         }
 
         public static void IfNullOrEmpty<T>(IEnumerable<T> argument, string name)
         {
+            IfNullOrWhiteSpace(name, nameof(name));
+
             if (argument == null || !argument.Any())
                 throw new ArgumentException($"{name} cannot be null or empty.", name);
         }
