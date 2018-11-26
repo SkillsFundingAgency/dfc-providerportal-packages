@@ -722,5 +722,139 @@ namespace Dfc.ProviderProtal.Packages.Tests
             // assert
             Assert.Null(expected);
         }
+
+
+
+        [Fact]
+        public void Throw_IfGreaterThan_Int_WithLimitAs0ArgumentAs0AndNameAsNull_ThrowsArgumentException()
+        {
+            // arrange
+            int limit = 0;
+            int argument = 0;
+            string name = null;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
+
+            // act
+            try
+            {
+                Throw.IfGreaterThan(limit, argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
+        }
+
+        [Fact]
+        public void Throw_IfGreaterThan_Int_WithLimitAs0ArgumentAs0AndNameAsEmpty_ThrowsArgumentException()
+        {
+            // arrange
+            int limit = 0;
+            int argument = 0;
+            string name = string.Empty;
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
+
+            // act
+            try
+            {
+                Throw.IfGreaterThan(limit, argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
+        }
+
+        [Fact]
+        public void Throw_IfGreaterThan_Int_WithLimitAs0ArgumentAs0AndNameAsWhitespace_ThrowsArgumentException()
+        {
+            // arrange
+            int limit = 0;
+            int argument = 0;
+            string name = " ";
+            ArgumentException expected = new ArgumentException(ARGUMENTEXPECTION_MESSAGE);
+            ArgumentException actual = null;
+
+            // act
+            try
+            {
+                Throw.IfGreaterThan(limit, argument, name);
+            }
+            catch (ArgumentException e)
+            {
+                actual = e;
+            }
+
+            //assert
+            Assert.Equal(expected.Message, actual.Message);
+        }
+
+
+        [Fact]
+        public void Throw_IfGreaterThan_Int_WithLimitAs0ArgumentAs1_ThrowsArgumentOutOfRangeException()
+        {
+            // arrange
+            int limit = 0;
+            int argument = 1;
+            var name = nameof(argument);
+
+            // act & assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => Throw.IfGreaterThan(limit, argument, name));
+        }
+
+        [Fact]
+        public void Throw_IfGreaterThan_Int_WithLimitAs1ArgumentAs1_DoesNotThrowArgumentOutOfRangeException()
+        {
+            // arrange
+            int limit = 1;
+            int argument = 1;
+            var name = nameof(argument);
+            ArgumentOutOfRangeException expected = null;
+
+            //act
+            try
+            {
+                Throw.IfGreaterThan(limit, argument, name);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                expected = e;
+            }
+
+            // assert
+            Assert.Null(expected);
+        }
+
+        [Fact]
+        public void Throw_IfGreaterThan_Int_WithLimitAs2ArgumentAs1_DoesNotThrowArgumentOutOfRangeException()
+        {
+            // arrange
+            int limit = 2;
+            int argument = 1;
+            var name = nameof(argument);
+            ArgumentOutOfRangeException expected = null;
+
+            //act
+            try
+            {
+                Throw.IfGreaterThan(limit, argument, name);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                expected = e;
+            }
+
+            // assert
+            Assert.Null(expected);
+        }
+
     }
 }
