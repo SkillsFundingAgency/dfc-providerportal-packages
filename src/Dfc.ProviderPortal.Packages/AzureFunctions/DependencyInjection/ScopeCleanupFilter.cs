@@ -9,12 +9,16 @@ namespace Dfc.ProviderPortal.Packages.AzureFunctions.DependencyInjection
     {
         public Task OnExceptionAsync(FunctionExceptionContext exceptionContext, CancellationToken cancellationToken)
         {
+            Throw.IfNull(exceptionContext, nameof(exceptionContext));
+
             RemoveScope(exceptionContext.FunctionInstanceId);
             return Task.CompletedTask;
         }
 
         public Task OnExecutedAsync(FunctionExecutedContext executedContext, CancellationToken cancellationToken)
         {
+            Throw.IfNull(executedContext, nameof(executedContext));
+
             RemoveScope(executedContext.FunctionInstanceId);
             return Task.CompletedTask;
         }
