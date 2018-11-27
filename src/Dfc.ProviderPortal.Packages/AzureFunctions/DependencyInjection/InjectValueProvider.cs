@@ -8,7 +8,10 @@ namespace Dfc.ProviderPortal.Packages.AzureFunctions.DependencyInjection
     {
         private readonly object _value;
 
-        public InjectValueProvider(object value) => _value = value;
+        public InjectValueProvider(object value)
+        {
+            _value = value;
+        }
 
         public Type Type => _value.GetType();
 

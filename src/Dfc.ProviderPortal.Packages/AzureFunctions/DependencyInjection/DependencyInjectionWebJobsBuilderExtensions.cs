@@ -9,6 +9,8 @@ namespace Dfc.ProviderPortal.Packages.AzureFunctions.DependencyInjection
     {
         public static IWebJobsBuilder AddDependencyInjection(this IWebJobsBuilder builder)
         {
+            Throw.IfNull(builder, nameof(builder));
+
             builder.Services.AddSingleton<IInjectBindingProvider, InjectBindingProvider>();
             builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<IFunctionFilter, ScopeCleanupFilter>());
             builder.AddExtension<InjectConfiguration>();

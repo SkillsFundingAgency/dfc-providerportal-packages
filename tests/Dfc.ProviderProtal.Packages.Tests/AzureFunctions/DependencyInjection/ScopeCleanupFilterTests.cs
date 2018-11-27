@@ -1,13 +1,12 @@
-﻿using Dfc.ProviderPortal.Packages;
+﻿using Dfc.ProviderPortal.Packages.AzureFunctions.DependencyInjection;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
+using Moq;
 using System;
 using System.Collections.Generic;
-using Xunit;
-using Microsoft.Azure.WebJobs.Host;
-using Dfc.ProviderPortal.Packages.AzureFunctions.DependencyInjection;
 using System.Threading;
 using System.Threading.Tasks;
-using Moq;
-using Microsoft.Extensions.Logging;
+using Xunit;
 
 namespace Dfc.ProviderProtal.Packages.Tests.AzureFunctions.DependencyInjection
 {
@@ -37,16 +36,18 @@ namespace Dfc.ProviderProtal.Packages.Tests.AzureFunctions.DependencyInjection
             var functionName = "SomeName";
             var mockLogger = new Mock<ILogger>();
 
-            // act
-            FunctionExecutingContext functionExecutingContext =  new FunctionExecutingContext(
+            FunctionExecutingContext functionExecutingContext = new FunctionExecutingContext(
                 arguments,
                 properties,
                 functionInstanceId,
                 functionName,
                 mockLogger.Object);
+
             CancellationToken cancellationToken = new CancellationToken();
+
             var expected = Task.CompletedTask;
 
+            // act
             var actual = new ScopeCleanupFilter().OnExecutingAsync(functionExecutingContext, cancellationToken);
 
             // assert
@@ -74,7 +75,6 @@ namespace Dfc.ProviderProtal.Packages.Tests.AzureFunctions.DependencyInjection
             var functionName = "SomeName";
             var mockLogger = new Mock<ILogger>();
 
-            // act
             FunctionExecutedContext functionExecutedContext = new FunctionExecutedContext(
                 arguments,
                 properties,
@@ -82,9 +82,12 @@ namespace Dfc.ProviderProtal.Packages.Tests.AzureFunctions.DependencyInjection
                 functionName,
                 mockLogger.Object,
                 new Microsoft.Azure.WebJobs.Host.Executors.FunctionResult(true));
+
             CancellationToken cancellationToken = new CancellationToken();
+
             var expected = Task.CompletedTask;
 
+            // act
             var actual = new ScopeCleanupFilter().OnExecutedAsync(functionExecutedContext, cancellationToken);
 
             // assert
@@ -112,7 +115,6 @@ namespace Dfc.ProviderProtal.Packages.Tests.AzureFunctions.DependencyInjection
             var functionName = "SomeName";
             var mockLogger = new Mock<ILogger>();
 
-            // act
             FunctionExecutedContext functionExecutedContext = new FunctionExecutedContext(
                 arguments,
                 properties,
@@ -120,9 +122,12 @@ namespace Dfc.ProviderProtal.Packages.Tests.AzureFunctions.DependencyInjection
                 functionName,
                 mockLogger.Object,
                 new Microsoft.Azure.WebJobs.Host.Executors.FunctionResult(true));
+
             CancellationToken cancellationToken = new CancellationToken();
+
             var expected = Task.CompletedTask;
 
+            // act
             var actual = new ScopeCleanupFilter().OnExecutedAsync(functionExecutedContext, cancellationToken);
 
             // assert
